@@ -17,7 +17,6 @@ RSpec.configure do |config|
   config.shared_context_metadata_behavior = :apply_to_host_groups
 end
 
-
 RSpec.shared_context 'shared file', shared_context: :metadata do
   let(:baseline_file) { '/Users/mark/Documents/HIF Baseline.xlsx' }
   let(:spreadsheet) {described_class.new(file: baseline_file) }
