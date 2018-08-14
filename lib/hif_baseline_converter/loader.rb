@@ -10,6 +10,18 @@ module HifBaselineConverter
       @xlsx = Roo::Excelx.new(file)
     end
 
+    def convert
+      # row 3 - row 29
+      # match the rows that fall under the Summary section
+      @xlsx.to_a[@row_start..@row_end].each_with_object({}) do |row, obj|
+        if row.any?
+          json_key = row_names(row)
+          # puts json_key
+          obj[json_key] = row_value(row)
+        end
+      end
+    end
+
     def row_name(row)
       row.compact
          .first

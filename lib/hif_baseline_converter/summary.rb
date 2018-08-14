@@ -20,24 +20,7 @@ module HifBaselineConverter
 
     def initialize(file:)
       super
-    end
-
-    def convert
-      # row 3 - row 29
-      # match the rows that fall under the Summary section
-      rownum = 0; row_start = 4 ; row_end = 28
-      summaries =
-        @xlsx.each_with_object({}) do |row, obj|
-          next if (rownum += 1) < row_start || rownum > row_end
-          # obj[row_name] = row_value(row)
-          if row.any?
-            json_key = row_names(row)
-            # puts json_key
-            obj[json_key] = row_value(row)
-          end
-        end
-
-      summaries
+      @row_start = 4 ; @row_end = 28
     end
 
     def row_names(row)
