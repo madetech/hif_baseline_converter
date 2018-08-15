@@ -1,0 +1,95 @@
+{
+   "type":"array",
+   "title":"Financials",
+   "items":{
+      "type":"object",
+      "properties":{
+         "period":{
+            "type":"string",
+            "title":"Period"
+         },
+         "installments":{
+            "type":"array",
+            "title":"Instalments",
+            "items":{
+               "type":"object",
+               "properties":{
+                  "dateOfInstallment":{
+                     "type":"string",
+                     "format":"date",
+                     "title":"Date of Instalment"
+                  },
+                  "installmentAmount":{
+                     "type":"string",
+                     "title":"HIF Funding Profile - Baseline"
+                  }
+               }
+            }
+         },
+         "costs":{
+            "type":"array",
+            "title":"Cost of Infrastructures",
+            "items":{
+               "type":"object",
+               "properties":{
+                  "costOfInfrastructure":{
+                     "type":"string",
+                     "title":"Cost of Infrastructure"
+                  },
+                  "fundingStack":{
+                     "type":"object",
+                     "title":"Totally funded through HIF",
+                     "properties":{
+                        "totallyFundedThroughHIF":{
+                           "type":"boolean",
+                           "title":"Totally funded through HIF?"
+                        },
+                        "descriptionOfFundingStack":{
+                           "type":"string",
+                           "title":"If No: Description of Funding Stack"
+                        },
+                        "totalPublic":{
+                           "type":"string",
+                           "title":"If No, Total Public (exc. HIF)"
+                        },
+                        "totalPrivate":{
+                           "type":"string",
+                           "title":"If No, Total Private"
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "baselineCashflow":{
+            "type":"object",
+            "title":"Baseline Cashflow",
+            "properties":{
+               "summaryOfRequirement":{
+                  "type":"string",
+                  "format":"uri",
+                  "title":"Baseline Cashflow"
+               }
+            }
+         },
+         "recovery":{
+            "type":"object",
+            "title":"Recovery",
+            "properties":{
+               "aimToRecover":{
+                  "type":"boolean",
+                  "title":"Aim to Recover?"
+               },
+               "expectedAmountToRemove":{
+                  "type":"integer",
+                  "title":"Expected Amount"
+               },
+               "methodOfRecovery":{
+                  "type":"string",
+                  "title":"Method of Recovery?"
+               }
+            }
+         }
+      }
+   }
+}
