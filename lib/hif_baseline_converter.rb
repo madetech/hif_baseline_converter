@@ -4,6 +4,7 @@ require 'hif_baseline_converter/loader'
 require 'hif_baseline_converter/summary'
 require 'hif_baseline_converter/infrastructure'
 require 'hif_baseline_converter/financials'
+require 'hif_baseline_converter/outputs_actual'
 
 module HifBaselineConverter
 end

@@ -1,0 +1,27 @@
+{  
+   "type":"object",
+   "title":"Outputs - Actual",
+   "properties":{
+      "siteOutputs":{
+         "type":"array",
+         "title":"Site Outputs",
+         "items":{
+            "type":"object",
+            "properties":{
+               "siteName":{
+                  "type":"string",
+                  "title":"Name of site"
+               },
+               "siteLocalAuthority":{
+                  "type":"string",
+                  "title":"Local Authority"
+               },
+               "siteNumberOfUnits":{
+                  "type":"string",
+                  "title":"Number of Units"
+               }
+            }
+         }
+      }
+   }
+}
