@@ -5,15 +5,15 @@ module HifBaselineConverter
       'projectName' => 'Project Name',
       'leadAuthority' => 'Authority',
       'projectDescription' => 'Project description',
-      'projectType' => 'Greenfield', # this appears to be unused ATM
-      'polygonsUrl' => 'Polygons', # this appears to be unused ATM
+      'projectType' => 'Greenfield', # TODO: this appears to be unused ATM
+      'polygonsUrl' => 'Polygons', # TODO: this appears to be unused ATM
       'noOfHousingSites' => 'No. of housing sites',
       'totalArea' => 'area',
       'hifFundingAmount' => 'Funding',
       'descriptionOfInfrastructure' => 'Infrastructure',
       'descriptionOfWiderProjectDeliverables' => 'Wider',
-      'sitePlan' => 'Site Plan', # this appears to be unused ATM
-      'urls' => 'Comma seporated urls' # this appears to be unused ATM
+      'sitePlan' => 'Site Plan', # TODO: this appears to be unused ATM
+      'urls' => 'Comma seporated urls' # TODO: this appears to be unused ATM
     }.freeze
 
   class Summary < Loader

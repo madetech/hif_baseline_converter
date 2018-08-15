@@ -3,6 +3,7 @@ require 'hif_baseline_converter/railtie' if defined?(Rails)
 require 'hif_baseline_converter/loader'
 require 'hif_baseline_converter/summary'
 require 'hif_baseline_converter/infrastructure'
+require 'hif_baseline_converter/financials'
 
 module HifBaselineConverter
 end
