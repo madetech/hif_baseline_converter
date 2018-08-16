@@ -51,7 +51,7 @@ module HifBaselineConverter
           summaryOfCriticalPath:  concerned_columns[15],
         },
         s106: {
-          requirement:            concerned_columns[15],
+          requirement:            concerned_columns[16],
           summaryOfRequirement:   concerned_columns[17]
         },
         statutoryConsents: {
@@ -96,6 +96,8 @@ module HifBaselineConverter
 
     def date_parse(field)
      field ? Date.parse(field) : nil
+   rescue
+    field
     end
   end
 end
