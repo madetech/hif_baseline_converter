@@ -1,3 +1,4 @@
+require 'pry'
 require 'hif_baseline_converter/version'
 require 'hif_baseline_converter/railtie' if defined?(Rails)
 require 'hif_baseline_converter/loader'
