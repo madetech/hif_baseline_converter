@@ -1,0 +1,37 @@
+{
+   "type":"object",
+   "title":"Outputs - Forecast",
+   "properties":{
+      "totalUnits":{
+         "type":"integer",
+         "title":"Total Units"
+      },
+      "disposalStrategy":{
+         "type":"string",
+         "title":"Disposal Strategy / Critical Path"
+      },
+      "housingForecast":{
+         "type":"array",
+         "title":"Housing Forecast",
+         "items":{
+            "type":"object",
+            "properties":{
+               "date":{
+                  "type":"string",
+                  "title":"Date"
+               },
+               "target":{
+                  "type":"string",
+                  "format":"date",
+                  "title":"Housing Starts"
+               },
+               "housingCompletions":{
+                  "type":"string",
+                  "format":"date",
+                  "title":"Housing Completions"
+               }
+            }
+         }
+      }
+   }
+}
