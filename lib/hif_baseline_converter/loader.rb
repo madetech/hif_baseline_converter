@@ -21,6 +21,12 @@ module HifBaselineConverter
       end
     end
 
+    def convert_with_title
+      hash = {}
+      hash[title] = convert
+      hash
+    end
+
     def row_name(row)
       row.compact
          .first
@@ -30,5 +36,9 @@ module HifBaselineConverter
     def row_value(row)
       row[1..-1].compact.last
     end
+
+    private
+
+    attr_reader :title
   end
 end

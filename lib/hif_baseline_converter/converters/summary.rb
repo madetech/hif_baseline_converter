@@ -19,6 +19,7 @@ module HifBaselineConverter
   class Summary < Loader
     def initialize(file:)
       super
+      @title = :summary
       @row_start = 4; @row_end = 28
     end
 

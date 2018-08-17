@@ -2,6 +2,7 @@ module HifBaselineConverter
   class Financials < Loader
     def initialize(file:)
       super
+      @title = :financials
       @row_start = 74; @row_end = 94
     end
 

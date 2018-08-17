@@ -3,6 +3,7 @@ module HifBaselineConverter
 
     def initialize(file:)
       super
+      @title = :infrastructures
     end
 
     def convert
