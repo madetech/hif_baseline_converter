@@ -4,6 +4,7 @@ module HifBaselineConverter
 
     def initialize(file:)
       super
+      @title = :outputs_forecast
     end
 
     def convert

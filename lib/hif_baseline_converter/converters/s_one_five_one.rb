@@ -2,6 +2,7 @@ module HifBaselineConverter
   class SOneFiveOne < Loader
     def initialize(file:)
       super
+      @title = :s151
     end
 
     def convert
@@ -16,9 +17,8 @@ module HifBaselineConverter
         s151FundingEndDate: funding_end_data,
         s151ProjectLongstopDate: project_longstop_date
       }
-      end
-
     end
+  end
     # {
     #    "type":"object",
     #    "title":"Section 151",
