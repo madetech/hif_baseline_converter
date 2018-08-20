@@ -1,0 +1,58 @@
+#!/usr/bin/env ruby
+
+# Run rake tasks and cucumber features
+# from my_gem once it's installed.
+#
+# Example:
+#
+#   my_gem rake some-task
+#   my_gem rake some-task[args]
+#   my_gem cucumber feature1 feature2
+#
+# Note: cucumber features have '.feature' appended automatically,
+#       no need for you to do it ;)
+#
+# Author:: N David Brown
+# gem_dir = File.expand_path("..",File.dirname(__FILE__))
+# $LOAD_PATH.unshift gem_dir# Look in gem directory for resources first.
+# exec_type = ARGV[0]
+# if exec_type == 'rake' then
+#     require 'rake'
+#     require 'pp'
+#     pwd=Dir.pwd
+#     Dir.chdir(gem_dir) # We'll load rakefile from the gem's dir.
+#     Rake.application.init
+#     Rake.application.load_rakefile
+#     Dir.chdir(pwd) # Revert to original pwd for any path args passed to task.
+
+#     Rake.application.invoke_task(ARGV[1])
+# end
+require 'pry'
+require 'httparty'
+require 'bundler/setup'
+require 'hif_baseline_converter'
+
+sheet_path = ARGV[0]
+url = ARGV[1]
+
+raise ArgumentError.new('Path to HIF file is required') unless sheet_path
+raise ArgumentError.new('must define url') unless url
+raise StandardError.new('Specified path is not a file') unless File.file?(sheet_path)
+json =  HifBaselineConverter::Converter.new(file_path: sheet_path).convert_to_pretty_json
+
+result = HTTParty.post(url.to_str,
+    body: json,
+    headers: {
+    'Content-Type': 'application/json'
+    })
+
+if result.success?
+  body = JSON.parse result.body
+  puts body
+  project_id = body.dig('projectId', 'id')
+  puts "Your project has been created: #{project_id}"
+else
+  puts 'Whoops, something went wrong'
+  puts result.body
+end
+
