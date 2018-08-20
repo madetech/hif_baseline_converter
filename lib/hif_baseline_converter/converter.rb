@@ -13,7 +13,11 @@ module HifBaselineConverter
     end
 
     def use_converters_with_title
-      converters.map { |c| c.new(file:file_path) }.map(&:convert_with_title).reduce(&:merge)
+      {
+        type: 'hif',
+        baselineData:
+          converters.map { |c| c.new(file:file_path) }.map(&:convert_with_title).reduce(&:merge)
+      }
     end
 
     def convert_to_pretty_json

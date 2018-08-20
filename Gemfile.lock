@@ -4,6 +4,7 @@ PATH
     hif_baseline_converter (0.1.0)
       activesupport
       json
+      pry
       roo
 
 GEM
@@ -109,7 +110,6 @@ DEPENDENCIES
   guard-rspec
   hif_baseline_converter!
   json_matchers
-  pry
   rake (~> 10.0)
   rspec (~> 3.0)
   rubocop
