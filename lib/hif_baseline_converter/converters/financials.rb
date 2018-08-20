@@ -49,7 +49,7 @@ module HifBaselineConverter
 
     def build_costs(concerned_columns, descriptions = nil)
       concerned_columns.each_with_index do |a,i|
-        p "#{a}, #{i}, #{descriptions[i] if descriptions}"
+        puts "#{a}, #{i}, #{descriptions[i] if descriptions}" if $debug
       end
 
       # buld the hash structure and map with the positions in the array

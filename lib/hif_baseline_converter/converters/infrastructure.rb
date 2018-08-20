@@ -30,8 +30,8 @@ module HifBaselineConverter
 
     def build_infratype(concerned_columns, descriptions = nil)
       concerned_columns.each_with_index do |a,i|
-        p "#{a}, #{i}, #{descriptions[i] if descriptions}"
-      end
+        puts "#{a}, #{i}, #{descriptions[i] if descriptions}"
+      end if $debug
       # buld the hash structure and map with the positions in the array
       {
         type:         concerned_columns[3],

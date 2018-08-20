@@ -2,7 +2,6 @@ require 'roo'
 require 'pry'
 # require 'active_support'
 # require 'active_support/core_ext'
-
 module HifBaselineConverter
   class Loader
     attr_reader :xlsx

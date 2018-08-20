@@ -13,5 +13,6 @@ require 'hif_baseline_converter/converters/outputs_forecast'
 
 require 'hif_baseline_converter/converter'
 
+$debug = false
 module HifBaselineConverter
 end
