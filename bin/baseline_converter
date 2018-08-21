@@ -40,6 +40,8 @@ raise ArgumentError.new('must define url') unless url
 raise StandardError.new('Specified path is not a file') unless File.file?(sheet_path)
 json =  HifBaselineConverter::Converter.new(file_path: sheet_path).convert_to_pretty_json
 
+puts json
+
 result = HTTParty.post(url.to_str,
     body: json,
     headers: {
