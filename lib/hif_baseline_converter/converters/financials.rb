@@ -51,7 +51,6 @@ module HifBaselineConverter
       concerned_columns.each_with_index do |a,i|
         puts "#{a}, #{i}, #{descriptions[i] if descriptions}" if $debug
       end
-binding.pry
       # buld the hash structure and map with the positions in the array
       {
         costOfInfrastructure:         concerned_columns[0].to_s,
