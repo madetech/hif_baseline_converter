@@ -41,20 +41,21 @@ raise StandardError.new('Specified path is not a file') unless File.file?(sheet_
 json =  HifBaselineConverter::Converter.new(file_path: sheet_path).convert_to_pretty_json
 
 puts json
+File.open('baseline.json', 'w') { |file| file.write(json) }
 
-result = HTTParty.post(url.to_str,
-    body: json,
-    headers: {
-    'Content-Type': 'application/json'
-    })
+# result = HTTParty.post(url.to_str,
+#     body: json,
+#     headers: {
+#     'Content-Type': 'application/json'
+#     })
 
-if result.success?
-  body = JSON.parse result.body
-  puts body
-  project_id = body.dig('projectId', 'id')
-  puts "Your project has been created: #{project_id}"
-else
-  puts 'Whoops, something went wrong'
-  puts result.body
-end
+# if result.success?
+#   body = JSON.parse result.body
+#   puts body
+#   project_id = body.dig('projectId', 'id')
+#   puts "Your project has been created: #{project_id}"
+# else
+#   puts 'Whoops, something went wrong'
+#   puts result.body
+# end
 

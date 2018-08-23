@@ -2,7 +2,7 @@ module HifBaselineConverter
   class Financials < Loader
     def initialize(file:)
       super
-      @title = :financials
+      @title = :financial
       @row_start = 74; @row_end = 94
     end
 
@@ -51,7 +51,7 @@ module HifBaselineConverter
       concerned_columns.each_with_index do |a,i|
         puts "#{a}, #{i}, #{descriptions[i] if descriptions}" if $debug
       end
-
+binding.pry
       # buld the hash structure and map with the positions in the array
       {
         costOfInfrastructure:         concerned_columns[0].to_s,
@@ -78,16 +78,40 @@ module HifBaselineConverter
         end
       # build a multi ray of dates, values [[date, value],[date,value]]
       filled_funding_profiles = funding_profile.select { |profile| profile unless profile.last.nil? }
-
+# binding.pry
       raise 'No "HIF Funding Profile - Baseline" defined ' unless filled_funding_profiles.any?
-
       period = "#{filled_funding_profiles.first.first.year}/#{filled_funding_profiles.last.first.year}"
-      instalments =
-        filled_funding_profiles.map do |profile|
-          { dateOfInstalment: profile.first, instalmentAmount: profile.last }
-        end
 
-      { instalments: instalments, period: period }
+      installments = filled_funding_profiles.group_by{|ppp| ppp.first.year}
+
+      allinstalments =
+        installments.map do |p_year, quarters|
+
+          baselineInstalments = {}
+          quarters.each_with_index do |(q, val),i|
+            baselineInstalments["baselineInstalmentQ#{i+1}".to_sym] = val
+            raise 'too many quarters' if i > 3
+          end
+          dateOfInstalment = Date.new(p_year).to_s
+          pay_quarters = baselineInstalments.values
+          baselineInstalmentYear = pay_quarters.sum
+          baselineInstalmentTotal = baselineInstalmentYear / pay_quarters.size
+          instalmentAmount = baselineInstalmentTotal
+                  {
+                    "dateOfInstalment": dateOfInstalment,
+                    "instalmentAmount": instalmentAmount.to_s,
+                    "baselineInstalments": [
+                      {
+                        "baselineInstalmentYear": baselineInstalmentYear.to_s,
+                        "baselineInstalmentTotal": baselineInstalmentTotal.to_s
+                      }.merge(baselineInstalments)
+                    ]
+                  }
+        end
+      {
+        period: period,
+        instalments: allinstalments
+      }
     end
   end
 end
