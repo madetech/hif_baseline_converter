@@ -19,7 +19,7 @@ module HifBaselineConverter
     def recovery
       sheet_ary = @xlsx.to_a[89..91]
       {
-        aimToRecover: sheet_ary[0][2],
+        aimToRecover: to_bool(sheet_ary[0][2]),
         expectedAmountToRemove: sheet_ary[1][2],
         methodOfRecovery: sheet_ary[2][2]
       }
@@ -55,7 +55,7 @@ module HifBaselineConverter
       {
         costOfInfrastructure:         concerned_columns[0].to_s,
         fundingStack: {
-          totallyFundedThroughHIF:    concerned_columns[1],
+          totallyFundedThroughHIF:    to_bool(concerned_columns[1]),
           descriptionOfFundingStack:  concerned_columns[2],
           totalPublic:                concerned_columns[3],
           totalPrivate:               concerned_columns[4]
@@ -77,7 +77,6 @@ module HifBaselineConverter
         end
       # build a multi ray of dates, values [[date, value],[date,value]]
       filled_funding_profiles = funding_profile.select { |profile| profile unless profile.last.nil? }
-# binding.pry
       raise 'No "HIF Funding Profile - Baseline" defined ' unless filled_funding_profiles.any?
       period = "#{filled_funding_profiles.first.first.year}/#{filled_funding_profiles.last.first.year}"
 
@@ -112,47 +111,11 @@ module HifBaselineConverter
         instalments: allinstalments
       }
     end
+
+    private
+
+    def to_bool(str)
+      str == 'YES'
+    end
   end
 end
-
-__END__
-"financial": [
-      {
-        "period": "2019/2020",
-        "instalments": [
-          {
-            "dateOfInstalment": "2020-01-01",
-            "instalmentAmount": "1000",
-            "baselineInstalments": [
-              {
-                "baselineInstalmentYear": "4000",
-                "baselineInstalmentQ1": "1000",
-                "baselineInstalmentQ2": "1000",
-                "baselineInstalmentQ3": "1000",
-                "baselineInstalmentQ4": "1000",
-                "baselineInstalmentTotal": "1000"
-              }
-            ]
-          }
-        ],
-        "costs": [
-          {
-            "costOfInfrastructure": "1000",
-            "fundingStack": {
-              "totallyFundedThroughHIF": true,
-              "descriptionOfFundingStack": "Stack",
-              "totalPublic": "2000",
-              "totalPrivate": "2000"
-            }
-          }
-        ],
-        "baselineCashFlow": {
-          "summaryOfRequirement": "uri"
-        },
-        "recovery": {
-          "aimToRecover": true,
-          "expectedAmountToRemove": 10,
-          "methodOfRecovery": "Recovery method"
-        }
-      }
-    ],
