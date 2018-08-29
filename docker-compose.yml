@@ -1,0 +1,9 @@
+version: "3"
+services:
+  converter:
+    build: .
+    volumes:
+      - ./:/app
+    command: "ash"
+    privileged: true
+
