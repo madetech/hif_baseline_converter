@@ -1,30 +1,18 @@
 # HifBaselineConverter
 
 
-## Installation
+## Setup
 
-Add this line to your application's Gemfile:
+To setup the converter run:
 
-```ruby
-gem 'hif_baseline_converter'
+```bash
+$ make docker-build
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install hif_baseline_converter
 
 ## Usage
 
-To run and post directly -
+To convert your baseline data - place the data inside the `baseline-data` directory and run:
 
-Add to a rails project and run with
-
-    $ rake he:parse_hif_sheet['<path to spreadsheet>']
-
-or, execute directly from the gem
-
-    $ bin/baseline_converter <path to spreadsheet> http://<api url>/project/create
+```bash
+$ make convert BASELINE=<path to spreadsheet> URL=<api url>/project/create
+```

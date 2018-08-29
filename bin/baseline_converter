@@ -30,9 +30,9 @@
 require 'pry'
 require 'httparty'
 require 'bundler/setup'
-require 'hif_baseline_converter'
+require_relative '../lib/loader'
 
-sheet_path = ARGV[0]
+sheet_path = "#{__dir__}/../baseline-data/#{ARGV[0]}"
 url = ARGV[1]
 
 raise ArgumentError.new('Path to HIF file is required') unless sheet_path
