@@ -18,7 +18,7 @@ RSpec.configure do |config|
 end
 
 RSpec.shared_context 'shared file', shared_context: :metadata do
-  let(:baseline_file) { '/Users/mark/Documents/HIF Baseline.xlsx' }
+  let(:baseline_file) { "#{__dir__}/support/HIF Baseline.xlsx" }
   let(:spreadsheet) {described_class.new(file: baseline_file) }
 end
 
