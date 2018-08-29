@@ -1,13 +1,3 @@
-PATH
-  remote: .
-  specs:
-    hif_baseline_converter (0.1.0)
-      activesupport
-      httparty
-      json
-      pry
-      roo
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -68,10 +58,10 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     rainbow (3.0.0)
-    rake (10.5.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    require_all (2.0.0)
     roo (2.7.1)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
@@ -112,14 +102,20 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16)
+  activesupport
   guard-rspec
-  hif_baseline_converter!
+  httparty
+  json
   json_matchers
-  rake (~> 10.0)
-  rspec (~> 3.0)
+  pry
+  require_all
+  roo
+  rspec
   rspec_junit_formatter
   rubocop
+
+RUBY VERSION
+   ruby 2.5.1p57
 
 BUNDLED WITH
    1.16.4
